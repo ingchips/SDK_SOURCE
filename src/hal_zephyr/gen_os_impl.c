@@ -76,7 +76,7 @@ static void os_timer_cb(struct k_timer *xTimer)
     struct timer_user_data *data = (struct timer_user_data *)xTimer->user_data;
     data->timer_cb(data->user_data);
 }
-#define OPEN_DEBUG 1
+// #define OPEN_DEBUG 1
 k_timeout_t g_time_set;
 void os_open_psp_control(void);
 
@@ -162,7 +162,7 @@ void my_timer_out_test() {
     platform_printf("time out over\r\n");
 }
 
-gen_handle_t os_impl_task_create_real()
+uint32_t os_impl_task_create_real()
 {
     #ifdef OPEN_DEBUG
     platform_printf("%.10s %d %s\r\n", __FILE__, __LINE__, __func__);
@@ -179,7 +179,7 @@ gen_handle_t os_impl_task_create_real()
             k_thread_name_set(tid, port_task_entry[i].task_name);
         }
     }
-    return (gen_handle_t) g_ret_task;
+    return (uint32_t) g_ret_task;
 
 }
 gen_handle_t port_task_create(
