@@ -1,6 +1,7 @@
 #todo 918
+if (CONFIG_HAS_INGCHIPS_DRIVERS)
+add_subdirectory_ifdef(CONFIG_HAS_TELINK_DRIVERS tlsr9)
 zephyr_library()
-
 zephyr_include_directories(src/BSP)
 zephyr_include_directories(src/FWlib)
 zephyr_include_directories(src/Tools)
@@ -35,3 +36,4 @@ add_definitions(-DUSE_STDPERIPH_DRIVER)
 add_definitions(-DPOWER_SAVING)
 add_definitions(-DLISTEN_TO_POWER_SAVING)
 add_definitions(-DINGCHIPS_FAMILY_916=1)
+endif()
